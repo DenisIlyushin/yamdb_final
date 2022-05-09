@@ -64,7 +64,6 @@ jobs:
     steps:
       -
         name: try connection
-        name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_SERVER }}
