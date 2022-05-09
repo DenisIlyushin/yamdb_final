@@ -7,7 +7,7 @@
 
 ___
 
-![example workflow](https://github.com/DenisIlyushin/yamdb_final/actions/workflows/yamdb_workflow.yaml/badge.svg)
+![example workflow](https://github.com/DenisIlyushin/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 ## Технологии
 - Python v3.7
