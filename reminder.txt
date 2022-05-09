@@ -1,0 +1,99 @@
+## Активация venv из командной строки винды
+## Нужно указывать полный путь до папки venv проекта
+G:\Dev\Private\venv\Scripts\activate.ps1
+
+## Создание Venv git-bash
+python -m venv venv
+
+## Активация git-bash
+source ./venv/scripts/activate
+
+## Деактивация git-bash
+deactivate
+
+## Заводим дополнения из requirements.txt, если есть
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+
+## если хочешь обновить requirements.txt
+pip freeze > requirements.txt
+
+
+## Дополнительные штуки
+pip install flake8
+pip install pytest
+flake8 --version
+pip3 install pep8-naming
+pip3 install flake8-broken-line
+pip3 install flake8-return
+pip3 install flake8-isort
+pip install Django==2.2.19
+
+# для картинок
+pip install pillow
+pip install sorl-thumbnail
+# альтернатива
+python -m pip install --upgrade pip
+python -m pip install --upgrade sorl-thumbnail
+
+# дляpython-dotenv==0.19.0
+python-telegram-bot==13.7 ботов
+
+
+## scaffolding проекта в джанго
+django-admin startproject имя_проекта
+
+## запуск нового прилодения в проекте
+django-admin startapp ...
+
+
+
+
+
+## запуск сервера в режиме разработки
+(venv)...Dev/yatube_poject$ cd yatube
+(venv)...Dev/yatube_poject/yatube$ python manage.py runserver
+
+
+
+
+
+
+## покрытия тестов (из папки проекта при включенном venv)
+coverage run --source='posts,users' manage.py test -v 2
+coverage report
+coverage html
+
+
+
+
+
+# Запустит все тесты проекта
+python manage.py test
+
+# Запустит только тесты в приложении posts
+python manage.py test posts
+
+# Запустит только тесты из файла test_urls.py в приложении posts
+python manage.py test posts.tests.test_urls
+
+# Запустит только тесты из класса StaticURLTests для test_urls.py в приложении posts
+python manage.py test posts.tests.test_urls.StaticURLTests
+
+# Запустит только тест test_homepage()
+# из класса StaticURLTests для test_urls.py в приложении posts
+python manage.py test posts.tests.test_urls.StaticURLTests.test_homepage
+
+## API
+
+# djoser&JWT - айтинтификация по токенам
+pip install djoser djangorestframework_simplejwt
+
+# Filtes
+pip install django-filter
+
+# CORS
+pip install django-cors-headers
+
+# документирование
+pip install -U drf-yasg
