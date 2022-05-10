@@ -71,9 +71,22 @@ jobs:
           username: ${{ secrets.HOST_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          script: |
+          script: |           
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb_api:latest
-            sudo docker-compose down
+            sudo docker-compose stop
+            sudo docker-compose rm web
+            
+            rm .env -f
+            touch .env
+            
+            echo SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }} >> .env
+            echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
+            echo DB_NAME=${{ secrets.DB_NAME }} >> .env
+            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+            
                         
             # перезапускаем контейнеры
             sudo docker-compose up -d 
@@ -91,7 +104,7 @@ jobs:
             sudo docker-compose exec -T web python manage.py collectstatic --no-input
             
             # Наполнение базы стандартными данными
-            # docker-compose exec -Т web python manage.py import_csv
+            # sudo docker-compose exec -Т web python manage.py import_csv
             
             # Обслуживание Docker. Удаление старых образов
             sudo docker system prune -af
