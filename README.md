@@ -167,11 +167,13 @@ docker-compose exec web bash
 python manage.py flush
 
 python3 manage.py shell
-
+```
+```python
 from django.contrib.contenttypes.models import ContentType
 ContentType.objects.all().delete()
 quit()
-
+```
+```bash
 python manage.py loaddata dump.json
 ```
 
@@ -190,3 +192,9 @@ python manage.py loaddata dump.json
 
 Авторы помогали друг другу и получили массу опыта и удовольствия выполняя проект 
 в одной команде!
+
+## Ссылки на deploy-сервер
+
+[Админка](http://denisilyushin.ddns.net/admin/)
+
+[Документация api](http://denisilyushin.ddns.net/redoc/)
